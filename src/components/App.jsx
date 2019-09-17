@@ -14,7 +14,7 @@ class App extends React.Component {
       currentVideo: n
     });
   }
-  render = () => (
+  render(){return(
     <div>
     <nav className="navbar">
       <div className="col-md-6 offset-md-3">
@@ -23,14 +23,14 @@ class App extends React.Component {
     </nav>
     <div className="row">
       <div className="col-md-7">
-        <div><h5><VideoPlayer video={props.data}/></h5></div>
+        <div><h5><VideoPlayer video={this.props.data[2]}/></h5></div>
       </div>
       <div className="col-md-5">
-        <div><h5><VideoList videos={props.data}/></h5></div>
+        <div><h5><VideoList videos={this.props.data}/></h5></div>
       </div>
     </div>
   </div>
-  )
+  );}
 }
 
 // var App = (props) => (
