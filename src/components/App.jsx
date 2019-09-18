@@ -1,32 +1,33 @@
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
+import Search from './Search.js';
 class App extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      currentVideo: 1
+      currentVideo: props.data[0]
     }
   }
 
-  whenVideoChange(n) {
+  whenVideoChange(obj) {
     this.setState({
-      currentVideo: n
+      currentVideo: obj
     });
   }
-  render(){return(
+  render() {return(
     <div>
     <nav className="navbar">
       <div className="col-md-6 offset-md-3">
-        <div><h5><em>search</em> view goes here</h5></div>
+        <Search/>
       </div>
     </nav>
     <div className="row">
       <div className="col-md-7">
-        <div><h5><VideoPlayer video={this.props.data[2]}/></h5></div>
+        <VideoPlayer video={this.state.currentVideo}/>
       </div>
       <div className="col-md-5">
-        <div><h5><VideoList videos={this.props.data}/></h5></div>
+        <VideoList videos={this.props.data} videoOnClick={this.whenVideoChange.bind(this)}/>
       </div>
     </div>
   </div>
